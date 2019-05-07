@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <title>Doggo</title>
+    <script type="text/javascript">
+        //init object globally
+        var objImage= null;
+        function init(){
+            objImage=document.getElementById("image1");				
+            objImage.style.position='relative';
+            objImage.style.left='0px';
+            objImage.style.top='0px';
+        }
+        function getKeyAndMove(e){				
+            var key_code=e.which||e.keyCode;
+            switch(key_code){
+                case 37: //left arrow key
+                    moveLeft();
+                    break;
+                case 38: //Up arrow key
+                    moveUp();
+                    break;
+                case 39: //right arrow key
+                    moveRight();
+                    break;
+                case 40: //down arrow key
+                    moveDown();
+                    break;						
+            }
+        }
+        function moveLeft(){
+            objImage.style.left=parseInt(objImage.style.left)-300 +'px';
+        }
+        function moveUp(){
+            objImage.style.top=parseInt(objImage.style.top)-300 +'px';
+        }
+        function moveRight(){
+            objImage.style.left=parseInt(objImage.style.left)+300 +'px';
+        }
+        function moveDown(){
+            objImage.style.top=parseInt(objImage.style.top)+300 +'px';
+        }
+        window.onload=init;
+    </script>
+        <script type="text/javascript">
+            window.onload = function(){
+                var bsDiv = document.getElementById("image1");
+                var x, y;
+    // On mousemove use event.clientX and event.clientY to set the location of the div to the location of the cursor:
+                window.addEventListener('mousemove', function(event){
+                    x = event.clientX;
+                    y = event.clientY;                    
+                    if ( typeof x !== 'undefined' ){
+                        bsDiv.style.left = x + "px";
+                        bsDiv.style.top = y + "px";
+                    }
+                }, false);
+            }
+        </script>
+</head>
+<body onkeydown='getKeyAndMove(event)'>
+    <div class="test">
+    <img id="image1" src="doge.png"/>
+</div>
+</body>
+</html>
